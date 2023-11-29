@@ -1,5 +1,5 @@
 #include "sm-codec.h"
-#include "stdio.h"
+#include "log.h"
 
 int decode_tpdu(tpdu_t *tpdu, uint8_t rp_mti, uint8_t *buf, uint8_t len) {
     memset(tpdu, 0, sizeof(tpdu_t));
@@ -124,7 +124,7 @@ int decode_tpdu(tpdu_t *tpdu, uint8_t rp_mti, uint8_t *buf, uint8_t len) {
         // assert(idx + tpdu->tp_user_data_length == len);
         return SM_CODEC_OK;
     } else {
-        printf("unknown tp-mti:%d", tpdu->tp_mti);
+        lol_debug("unknown tp-mti:%d", tpdu->tp_mti);
         return SM_CODEC_ERROR;
     }
     return SM_CODEC_ERROR;
@@ -198,13 +198,13 @@ int decode_message_container(nas_cp_message_t *cm, uint8_t length, uint8_t *buf)
         }
     } else if (message_type == CP_ACK) {
         // cp-ack
-        printf("received cp-ack");
+        lol_debug("received cp-ack");
     } else if (message_type == CP_ERROR) {
         // cp-error
         cm->cause_value = buf[idx];
     } else {
         // decode error
-        printf("decode nas message container message type failed");
+        lol_debug("decode nas message container message type failed");
         return SM_CODEC_ERROR;
     }
     return SM_CODEC_ERROR;

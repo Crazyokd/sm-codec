@@ -1,0 +1,7 @@
+[wrap-git]
+directory = lol
+url = https://github.com/Crazyokd/lol.git
+revision = main
+
+[provide]
+lol = lol_dep

@@ -42,7 +42,7 @@ executable(
     'example',
     'example.c',
     include_directories: [comm_inc],
-    link_with: [sm_codec],
+    dependencies: [sm_codec_dep],
     install_rpath: libdir,
     install_dir: bindir,
     install: true,

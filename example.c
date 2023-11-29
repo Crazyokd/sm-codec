@@ -1,8 +1,10 @@
 #include "sm-codec.h"
 #include "stdio.h"
+#include "log.h"
+
 
 int main() {
-    printf("start decode");
+    lol_debug("start decode");
     /* ms->network cp-data */
     uint8_t data[] = {
         0x19, 0x01, 0x21, 0x00, 0x01, 0x00, 0x08, 0x91, 0x68, 0x31, 0x08, 0x10, 0x83, 0x00, 0xf0, 0x14,
@@ -99,6 +101,6 @@ int main() {
     decode_tpdu(tpdu, NETWORK_MS_RP_DATA, (uint8_t*)sm_rp_ui, tpdul);
     
     free(tpdu);
-    printf("decode success");
+    lol_debug("decode success");
     return 0;
 }

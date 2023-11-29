@@ -1,3 +1,4 @@
 .vscode/
 build/
 install
+subprojects/lol/
